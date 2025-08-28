@@ -41,7 +41,10 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
       open={openModal.state}
       onOpenChange={() => setOpenModal({ state: false, project: null })}
     >
-      <DialogContent className="group cursor-pointer bg-zinc-900/80 backdrop-blur-md p-6 rounded-xl text-zinc-200 border border-zinc-700 shadow-lg">
+      <DialogContent
+        className="group cursor-pointer bg-white/90 dark:bg-zinc-900/80 backdrop-blur-md p-6 rounded-xl
+  text-slate-800 dark:text-zinc-200 border border-zinc-300 dark:border-zinc-700 shadow-lg"
+      >
         <DialogHeader>
           <DialogTitle>{project && project.title}</DialogTitle>
           <DialogDescription>{project && project.date}</DialogDescription>
@@ -53,7 +56,7 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="space-y-6"
+            className="space-y-3 sm:space-y-6"
           >
             {/* Image */}
             <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-md">
@@ -67,7 +70,7 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
 
             {/* Title & Date */}
             <div>
-              <h2 className="text-2xl font-bold">{project.title}</h2>
+              <h2 className="text-xl sm:text-2xl font-bold">{project.title}</h2>
               <p className="text-sm text-muted-foreground">{project.date}</p>
             </div>
 
@@ -76,7 +79,7 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
               {project.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="text-xs px-3 py-1 rounded-full bg-muted text-muted-foreground"
+                  className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground"
                 >
                   {tag}
                 </span>
@@ -84,7 +87,12 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
             </div>
 
             {/* Description */}
-            <p className="text-sm leading-relaxed">{project.description}</p>
+            <div className="text-sm leading-relaxed">
+              <div className="relative max-h-24 sm:max-h-52 overflow-y-auto pr-2">
+                <span>{project.description}</span>
+                <div className="sticky bottom-0 bg-gradient-to-t from-white/90 dark:from-zinc-900/80 pt-2 text-right"></div>
+              </div>
+            </div>
 
             {/* Members */}
             {project.member && (
@@ -128,12 +136,16 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:pt-4">
               {project.github && (
-                <Button variant="outline" asChild className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto border-cyan-400 text-cyan-700 dark:border-cyan-600 dark:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-zinc-800"
+                >
                   <a
                     href={project.github}
                     target="_blank"
+                    aria-label="View Code on GitHub"
                     rel="noopener noreferrer"
                   >
                     View Code
@@ -145,6 +157,7 @@ const ProjectModal = ({ openModal, setOpenModal }: ProjectModalProps) => {
                   <a
                     href={project.webapp}
                     target="_blank"
+                    aria-label="View Live Application"
                     rel="noopener noreferrer"
                   >
                     View Live App

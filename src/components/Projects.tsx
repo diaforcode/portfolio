@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { projects } from "@/app/data/constants";
-import ProjectModal, { ProjectType } from "./ProjectModal"; // ensure it's in components
+import ProjectModal, { ProjectType } from "./ProjectModal"; 
 import Tilt from "react-parallax-tilt";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -27,7 +27,7 @@ const ProjectsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white"
+            className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white"
           >
             Projects
           </motion.h2>
@@ -35,7 +35,7 @@ const ProjectsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-muted-foreground mt-4 max-w-xl mx-auto text-base md:text-lg"
+            className="text-muted-foreground dark:text-shadow-muted-foreground mt-4 max-w-xl mx-auto text-base md:text-lg "
           >
             Here are some of my Projects on which I have been working.
           </motion.p>
@@ -55,7 +55,7 @@ const ProjectsSection = () => {
                 transition={{ delay: index * 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
                 onClick={() => setOpenModal({ state: true, project })}
-                className="group cursor-pointer bg-zinc-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-300"
+                className="group cursor-pointer p-4 rounded-xl shadow hover:shadow-lg transition duration-300 bg-zinc-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-100"
               >
                 <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                   <Image

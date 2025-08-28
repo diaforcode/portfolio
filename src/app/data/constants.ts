@@ -9,7 +9,6 @@ export interface SkillGroup {
 
 export interface Education {
   id: number;
-  img: string;
   school: string;
   date: string;
   desc: string;
@@ -214,5 +213,22 @@ export const projects: Project[] = [
     category: "web app",
     github: "https://github.com/Dayou23/Accessory-Shop",
     webapp: "https://accessory-shop-two.vercel.app/",
+  },
+];
+
+export const experience = [
+  {
+    title: "Freelancer",
+    company: "Self-employed",
+    duration: "2020 – Present",
+    description:
+      "Worked on a variety of freelance projects using React, Node.js, and modern web technologies. Collaborated with international clients and delivered responsive, accessible solutions.",
+  },
+  {
+    title: "Computer Science Engineer",
+    company: "Department of Promotion and Real Estate Management",
+    duration: "2023 – Present",
+    description:
+      "Developing internal applications, maintaining systems, and supporting digital transformation initiatives within the department.",
   },
 ];
